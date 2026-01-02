@@ -1,0 +1,7 @@
+{
+  "name": "Foshan English Master",
+  "description": "A gamified learning hub for Foshan primary school students to master PEP English vocabulary through arcade-style games.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
