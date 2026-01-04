@@ -137,12 +137,21 @@ export default function App() {
           
           {lastResult!.mistakes.length > 0 && (
             <div className="mb-6">
-                <p className="text-sm text-red-500 font-bold mb-2">Review Words:</p>
+                <p className="text-sm text-red-500 font-bold mb-2">Review Words (Tap to listen):</p>
                 <div className="flex flex-wrap gap-2 justify-center">
                     {allWords.filter(w => lastResult!.mistakes.includes(w.id)).map(w => (
-                        <span key={w.id} onClick={() => speak(w.text)} className="px-2 py-1 bg-red-100 text-red-600 rounded text-xs cursor-pointer">
-                            {w.text} 🔊
-                        </span>
+                        <button 
+                            key={w.id} 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                speak(w.text);
+                            }} 
+                            className="px-3 py-1.5 bg-red-100 text-red-600 rounded-lg text-sm font-bold cursor-pointer hover:bg-red-200 active:scale-95 transition-transform flex items-center gap-1"
+                            title="Click to hear pronunciation"
+                        >
+                            <span>{w.text}</span> 
+                            <span>🔊</span>
+                        </button>
                     ))}
                 </div>
             </div>
